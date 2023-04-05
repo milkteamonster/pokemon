@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Jxz">
+  <title>Pokemon Game</title>
+  <style>
+*{
+  margin: 0;
+  padding: 0;
+}
+div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgb(175, 171, 166);
+  position: relative;
+}
+h1{
+  color: rgb(240, 227, 48);
+  margin-bottom: 30px;
+  font-size: 45px;
+}
+button{
+  padding: 15px 20px; 
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 15px;
+  border: none;
+  color: rgb(240, 227, 48);
+  background-color: rgb(90, 145, 145);
+  transition: .3s ;
+  box-shadow: 0 0 10px;
+  cursor: pointer;
+}
+button:hover{
+  color: rgb(90, 145, 145);
+  background-color: rgb(240, 227, 48);
+}
+.picture{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 700px;
+}
+.picture2{
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  width: 300px;
+}
+.picture img, .picture2 img{
+  vertical-align: bottom;
+  width: 100%;
+}
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Pokemon Game</h1>
+    <button id="start-btn">Game Start !</button>
+    <span class="picture">
+      <img src="/img/monsters.png">
+    </span>
+    <span class="picture2">
+      <img src="/img/monster_2.png">
+    </span>
+    <!-- <button onclick="clickFunction()">Game Start !</button> -->
+  </div>
+  <script>
+//     function clickFunction() {
+//   alert("Hello\nHow are you?");
+// }
+
+var startBtn = document.querySelector("#start-btn");
+/* var choice = prompt("Which pokemon would you assign?\n 0. pink   1. blue   2. white", 0); *///有兩個參數, (提示字元, 預設值)
+/* var computerChoice = Math.floor(Math.random() * 3); */ //Math.random功能:產生0-1之間的數值,可能為0.4566之類的 乘以3為0-3 .floor無條件捨去法取底數 則會是0, 1, 2
+
+startBtn.addEventListener("click", function(){
+  var computerChoice = Math.floor(Math.random() * 3);
+  var choice = parseInt(prompt("Which pokemon would you assign?\n 0. pink   1. blue   2. white", 0));// parseInt 將字串換成數字
+  if(choice === 0){
+    alert("you send pink!");
+    if(computerChoice === 0){
+      alert("對手也派出了pink, 平分秋色");
+    }else if (computerChoice === 1){
+      alert("對手派出了blue, 屬性相剋,你輸了");
+    }else if (computerChoice === 2){
+      alert("對手派出了white, 你贏了");
+    }
+  } else if (choice === 1){
+    alert("you send blue!");
+    if(computerChoice === 0){
+      alert("對手也派出了blue, 平分秋色");
+    }else if (computerChoice === 1){
+      alert("對手派出了white, 屬性相剋,你輸了");
+    }else if (computerChoice === 2){
+      alert("對手派出了pink, 你贏了");
+    }
+  } else if (choice === 2){
+    alert("you send white!");
+    if(computerChoice === 0){
+      alert("對手也派出了white, 平分秋色");
+    }else if (computerChoice === 1){
+      alert("對手派出了blue, 屬性相剋,你輸了");
+    }else if (computerChoice === 2){
+      alert("對手派出了pink, 你贏了");
+    }
+  }
+});
+
+  </script>
+</body>
+</html>
+
